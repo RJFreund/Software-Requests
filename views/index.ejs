@@ -9,7 +9,15 @@
     <p>Welcome to <%= title %></p>
     <table>
       <tbody>
-        <tr></tr>
+        <tr>
+          <% for(var srIndex in softwareRequests){
+            var softwareRequest = softwareRequests[srIndex];
+            for (var propIndex in softwareRequest){
+              var property = softwareRequest[propIndex];
+              %><th><%= property %></th><%
+            }
+          } %>
+        </tr>
       </tbody>
     </table>
   </body>
