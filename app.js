@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('bower_components',  express.static( path.join(__dirname, 'bower_components')));
+app.use('/bower_components',  express.static( path.join(__dirname, 'bower_components')));
 
 
 var server = app.listen(port);
@@ -32,6 +32,7 @@ io.sockets.on('connection', function(socket){
 
 var routes = require('./routes/index')(io);
 app.use('/', routes);
+app.use('*', routes);
 
 console.log('Running on port ' + port);
 
